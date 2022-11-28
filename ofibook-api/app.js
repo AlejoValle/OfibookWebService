@@ -3,7 +3,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require("cors");
-const netlify = require("./netlify/functions/conectionxd/conectionxd");
+const netlify = require("./netlify/MongoConection/MongoConection");
 
 const apiRouter = require("./routes/api/index.router");
 
