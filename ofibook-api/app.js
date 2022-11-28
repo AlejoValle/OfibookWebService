@@ -3,13 +3,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require("cors");
-const netlify = require("./netlify/functions/MongoConection/MongoConection");
+const mongoose = require("./config/mongoose");
 
 const apiRouter = require("./routes/api/index.router");
 
 var app = express();
 
-netlify.connect();
+mongoose.connect();
 
 app.use(cors())
 app.use(logger("dev"));
