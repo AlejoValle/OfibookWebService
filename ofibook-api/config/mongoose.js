@@ -6,7 +6,7 @@ const dbhost = process.env.DBHOST || "localhost";
 const dbport = process.env.DBPORT || "21012";
 const dbname = process.env.DBNAME || "OfiBookMongodb";
 
-const dburi = process.env.DBURI || `mongodb+srv://admin:BWQio8ivTx9ftkn5@cluster0.qrl3jhz.mongodb.net/?retryWrites=true&w=majority`;
+const dburi = process.env.DBURI || `mongodb://${dbhost}:${dbport}/${dbname}`;
 
 const connect = async () => {
   debug(dburi);
