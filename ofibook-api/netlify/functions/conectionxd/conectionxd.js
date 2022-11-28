@@ -1,3 +1,5 @@
+const fetch = require('node-fetch')
+
 const Mongoose = require("mongoose");
 
 const debug = require("debug")("app:mongoose");
