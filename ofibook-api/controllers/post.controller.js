@@ -6,10 +6,13 @@ const controller = {};
 controller.create = async (req, res) => {
     try {
         const { title, description, image } = req.body;
+        const { _id: userId } = req.user;	
+
     const newPost = new Post({
         title : title,
         description : description,
         image : image,
+        user: userId,
     });
     await newPost.save();
     
@@ -26,7 +29,10 @@ controller.create = async (req, res) => {
 
 controller.findALL = async (req, res) => {
     try { 
-        const posts = await Post.find( { hidden: false } );
+        const posts = await Post
+        .find( { hidden: false } )
+        .populate('user', 'username email');
+
         return res.status(200).json({ posts });
 
     }

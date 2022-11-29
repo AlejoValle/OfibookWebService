@@ -3,11 +3,6 @@ const Mongoose = require('mongoose');
 const Schema = Mongoose.Schema;
 
 const PostSchema = new Schema ({
-    User: {
-        type: [Schema.Types.ObjectId],
-        ref: "user",
-        default: [],
-    },
     title: {
         type: String,
         trim: true,
@@ -24,7 +19,12 @@ const PostSchema = new Schema ({
     hidden: {
         type: Boolean,
         default: false,
-    },        
+    },  
+    user: {
+        type: [Schema.Types.ObjectId],
+        ref: "User",
+        default: [],
+    },      
 },{ timestamps: true });
 
-module.exports = Mongoose.model('Post', PostSchema); 
+module.exports = Mongoose.model('Post', PostSchema);  
