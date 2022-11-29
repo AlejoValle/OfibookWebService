@@ -5,7 +5,7 @@ const Schema = Mongoose.Schema;
 const PostSchema = new Schema ({
     User: {
         type: [Schema.Types.ObjectId],
-        ref: "Username",
+        ref: "user",
         default: [],
     },
     title: {
