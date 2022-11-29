@@ -12,6 +12,11 @@ const { authentication, authorization } = require("../..//middlewares//auth.midd
 
 router.get("/", postController.findALL);
 router.get("/own", authentication, postController.findOwn);
+router.get("/user/:identifier",
+    postValidators.findPostByIdValidator,
+    runValidations, 
+    postController.findPostsByUser
+    );
 router.get("/:identifier",
     postValidators.findPostByIdValidator,
     runValidations,
