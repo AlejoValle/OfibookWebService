@@ -42,6 +42,22 @@ controller.findALL = async (req, res) => {
     }
 };
 
+controller.findOwn = async (req, res) => {
+    try {
+      const { _id: userId } = req.user;
+  
+      const posts =
+        await Post
+          .find({ user: userId })
+          .populate("user", "username email");
+  
+      return res.status(200).json({ posts })
+    } catch (error) {
+      debug({ error });
+      return res.status(500).json({ error: "Error interno de servidor" });
+    }
+};
+
 controller.findOneById = async (req, res) => {
     try {
         const { identifier } = req.params;
