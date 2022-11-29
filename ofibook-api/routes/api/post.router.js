@@ -29,4 +29,28 @@ router.post("/",
     runValidations, 
     postController.create);
 
+    router.patch("/visibility/:identifier",
+    authentication,
+    authorization(ROLES.USER),
+    postValidators.findPostByIdValidator,
+    runValidations,
+    postController.togglePostVisibility
+);
+
+router.patch("/like/:identifier",
+    authentication,
+    authorization(ROLES.USER),
+    postValidators.findPostByIdValidator,
+    runValidations,
+    postController.togglePostLike
+);
+
+router.patch("/save/:identifier",
+    authentication,
+    authorization(ROLES.USER),
+    postValidators.findPostByIdValidator,
+    runValidations,
+    postController.toggleSavedPost
+)
+
 module.exports = router; 
