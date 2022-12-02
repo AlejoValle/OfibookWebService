@@ -1,4 +1,4 @@
-const Post = require('../models/prof.model');
+const prof = require('../models/prof.model');
 const debug = require('debug')( 'app:prof.controller' );
 
 const controller = {};
@@ -7,8 +7,8 @@ controller.create = async (req, res) => {
     try {
         const { profecion } = req.body;	
 
-    const newprof = new prf({
-        profecion : profecion
+    const newprof = new prof({
+        Profecion : profecion
     });
     await newprof.save();
     
@@ -25,14 +25,15 @@ controller.create = async (req, res) => {
 
 controller.findALL = async (req, res) => {
     try { 
-        const profs = await prof;
+        const profs = await prof
+        .find();
 
         return res.status(200).json({ profs });
 
     }
     catch (error) {
         debug({ error });
-        return res.status(500).json({ message: "Error al encontrar los posts" });
+        return res.status(500).json({ message: "Error al encontrar las profeciones" });
     }
 };
 
